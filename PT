@@ -1,0 +1,79 @@
+# Permit to Operate (PtO) — Team Readiness Checklist
+
+**Source:** Program Update from Lisa Robinson (VP, GI Operations Engineering), Aug 12, 2026
+**Prepared for:** SO FT Support / GenAI Support / EFC Frameworks Ops
+**Last updated:** 2026-08-18
+
+---
+
+## 1. Application Inventory
+
+| App Name | Owner | Current RTO | RTO Tier (≤72h / ≤744h / out of scope) | Notes |
+|---|---|---|---|---|
+| | | | | |
+| | | | | |
+
+> Pull RTO values from the PtO Square page or CMDB. This determines which NFRs below actually apply to each app.
+
+---
+
+## 2. Deadline: September 30, 2026 — Container Image Vulnerabilities
+
+**Applies to:** apps with RTO ≤ 744 hours (newly in scope)
+**Requirement [TECH06.03]:** No critical/high vulnerabilities with known exploits in production container images.
+
+- [ ] Identify which apps in the inventory fall into the ≤744h tier for the first time
+- [ ] Run/check current vulnerability scan results for those apps
+- [ ] Triage and remediate critical/high findings with known exploits
+- [ ] Confirm remediation status in the **PtO Insights Platform**
+- [ ] Re-scan and verify clean before Sept 30, 2026
+
+---
+
+## 3. Already-Enforced NFRs (RTO ≤ 72 hours)
+
+For each app already in this tier, confirm:
+
+- [ ] **Authorized Change Implementor** — prod deploys initiated by the ServiceNow-assigned implementor or an authorized service account
+- [ ] **Artifact Attribution** — ServiceNow change record identifies the deployed artifact
+- [ ] **Least Privilege** — deployment platform access is least-privilege and periodically reviewed
+- [ ] **Enterprise Customer MFA** — customer-facing apps enforce MFA [TECH09.13]
+- [ ] **Enterprise Tooling MFA** — deployment tooling enforces MFA for authorized users
+- [ ] **Enterprise Pipeline Tooling** — deploys run through GitHub Actions / XLR / ISPW
+- [ ] **Enterprise Platform Tooling** — deploys target approved hosting (Cloud, Mainframe, TIMS, etc.)
+- [ ] **Enterprise Artifact Tooling** — built artifacts stored in Artifactory
+- [ ] **Enterprise Version Control Tooling** — source resides in GitHub/ISPW
+- [ ] **Lower Environment Validation** — lower-env deploy/validation completed before prod
+- [ ] **Implementation Strategy Verification** — documented implementation strategy on the change record
+- [ ] **Validation Strategy Verification** — documented, executable validation steps on the change record
+
+---
+
+## 4. New Tooling: PtX Compliance
+
+- [ ] Confirm PtX compliance is active on our GitHub workflows/PRs
+- [ ] Review any findings it has already surfaced
+- [ ] Assign an owner to triage PtX findings going forward
+- [ ] If unclear on setup/results, ask in `#sdlc-community` or via Infrabot
+
+---
+
+## 5. Team Actions & Ownership
+
+| Action | Owner | Target Date | Status |
+|---|---|---|---|
+| Complete app RTO inventory | | | Not started |
+| Container vuln remediation (≤744h apps) | | 2026-09-30 | Not started |
+| Pipeline/tooling compliance audit (≤72h apps) | | | Not started |
+| PtX compliance review | | | Not started |
+| Reply to Lavanya with feedback/questions | | | Not started |
+
+---
+
+## 6. Resources
+
+- Weekly office hours: Thursdays 11:00 a.m. ET (join distribution group)
+- Slack: `#pto-announcements` (updates), `#sdlc-community` (PtX/CI-CD questions)
+- Infrabot: "Chat with PtO team" / "Talk with PtO team" / "Chat with PtO support"
+- Email: ptocomms@aexp.com
+- Full docs & roadmap: Permit to Operate page on The Square
